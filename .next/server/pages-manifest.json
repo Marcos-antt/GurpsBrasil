@@ -1,9 +1,1 @@
-{
-  "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
-  "/404": "pages/404.js",
-  "/encyclopedia": "pages/encyclopedia.js"
-}
+{"/_app":"pages/_app.js","/404":"pages/404.html","/admin":"pages/admin.html","/encyclopedia":"pages/encyclopedia.html","/":"pages/index.html","/_error":"pages/_error.js","/api/auth/[...nextauth]":"pages/api/auth/[...nextauth].js","/login":"pages/login.js","/_document":"pages/_document.js"}

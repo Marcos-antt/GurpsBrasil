@@ -1,16 +1,23 @@
 [
   {
     "id": 1,
-    "title": "Tirian Greaves",
+    "title": "A Queda de Altaris",
     "act": "Ato I",
-    "era": "Era da Guerra Sombria",
-    "summary": "Um guerreiro que abandonou o templo após o Cerco de Lysandor..."
+    "era": "Era dos Dragões",
+    "summary": "A cidade de Altaris foi destruída por uma guerra mágica milenar, dando início ao caos no continente."
   },
   {
     "id": 2,
-    "title": "Cidade Flutuante de Karth",
+    "title": "A Rosa de Ferro",
     "act": "Ato II",
-    "era": "Era da Alvorada Mística",
-    "summary": "Uma maravilha tecnológica e mágica que paira sobre as nuvens..."
+    "era": "Era das Cinzas",
+    "summary": "Um artefato ancestral ressurge em meio às ruínas de um império esquecido."
+  },
+  {
+    "id": 3,
+    "title": "O Sábio da Névoa",
+    "act": "Ato III",
+    "era": "Nova Aurora",
+    "summary": "Um velho mago tenta guiar uma nova geração de heróis contra a ameaça dos devoradores de mundos."
   }
 ]
