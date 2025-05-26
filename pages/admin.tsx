@@ -1,95 +1,111 @@
-// pages/admin.tsx
-import { getSession } from 'next-auth/react';
+// pages/index.tsx
 import MainLayout from '../layouts/MainLayout';
-import dynamic from 'next/dynamic';
-import { useState } from 'react';
+import Head from 'next/head';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-import 'react-quill/dist/quill.snow.css';
+const messages = [
+  "📚 Descubra mundos através das histórias dos jogadores",
+  "🎲 Compartilhe suas campanhas GURPS com a comunidade",
+  "🧙 Encare aventuras além da realidade",
+  "⚔️ Crie personagens, cidades e reinos épicos"
+];
 
-export default function AdminPage() {
-  const [formVisible, setFormVisible] = useState(false);
-  const [title, setTitle] = useState('');
-  const [act, setAct] = useState('');
-  const [era, setEra] = useState('');
-  const [content, setContent] = useState('');
+export default function Home() {
+  const [index, setIndex] = useState(0);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log({ title, act, era, content });
-    alert('História enviada (simulada)!');
-  };
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % messages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <MainLayout>
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">Área Administrativa</h1>
+      <Head>
+        <title>GURPS Fórum - Explore Fantasias</title>
+      </Head>
 
-      {!formVisible ? (
-        <button
-          onClick={() => setFormVisible(true)}
-          className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg shadow-md transition duration-200"
+      {/* Fundo com vídeo e overlay escuro */}
+      <div className="relative h-screen w-full overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
         >
-          Nova História
-        </button>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-6 mt-6 bg-white p-6 rounded-xl shadow-xl">
-          <div className="grid md:grid-cols-3 gap-4">
-            <input
-              type="text"
-              placeholder="Título da História"
-              className="w-full border border-gray-300 p-3 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
+          <source src="/video-fantasy.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-70 z-10"></div>
 
-            <input
-              type="text"
-              placeholder="Ato (ex: Ato I)"
-              className="w-full border border-gray-300 p-3 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500"
-              value={act}
-              onChange={(e) => setAct(e.target.value)}
-            />
 
-            <input
-              type="text"
-              placeholder="Era (ex: Era da Guerra Sombria)"
-              className="w-full border border-gray-300 p-3 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500"
-              value={era}
-              onChange={(e) => setEra(e.target.value)}
-            />
+
+        {/* Conteúdo centralizado */}
+        <div className="relative z-20 flex flex-col justify-center items-center text-center h-full px-6">
+          <div className="bg-white bg-opacity-10 backdrop-blur-xl p-10 rounded-xl shadow-xl max-w-3xl mt-20">
+            <h1 className="text-4xl sm:text-6xl font-extrabold text-white mb-6 drop-shadow-xl tracking-wide">
+              Bem-vindo ao GURPS Fórum
+            </h1>
+            <p className="text-lg sm:text-2xl text-[#f8c946] font-semibold transition-opacity duration-1000 ease-in-out min-h-[48px]">
+              {messages[index]}
+            </p>
+            <Link href="/encyclopedia">
+              <button className="mt-8 bg-[#ed1b24] hover:bg-[#b90d1b] text-white font-semibold px-6 py-3 rounded-md shadow-md">
+                Explorar Enciclopédia
+              </button>
+            </Link>
           </div>
+        </div>
+      </div>
 
-          <div className="bg-white rounded-lg shadow-sm">
-            <ReactQuill value={content} onChange={setContent} className="min-h-[200px]" />
+      {/* Footer */}
+      <footer className="bg-[#111] text-white py-10 px-4 md:px-16">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <h3 className="text-xl font-bold mb-2">Equipe</h3>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-center space-x-2">
+                <Image src="/team/Screenshot_1.png" alt="Caio Peralta" width={32} height={32} className="rounded-full" />
+                <span>Caio Peralta – Conteudista</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <Image src="/team/Screenshot_2.png" alt="Vitor Hugo" width={32} height={32} className="rounded-full" />
+                <span>Vitor Hugo – Conteudista</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <Image src="/team/Screenshot_4.png" alt="Samuel Romano" width={32} height={32} className="rounded-full" />
+                <span>Samuel Romano – Conteudista</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <Image src="/team/Screenshot_3.png" alt="Marcos Antônio" width={32} height={32} className="rounded-full" />
+                <span>Marcos Antônio – Desenvolvedor</span>
+              </li>
+            </ul>
           </div>
-
-          <div className="text-right">
-            <button
-              type="submit"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-md transition duration-200"
-            >
-              Enviar História
+          <div>
+            <h3 className="text-xl font-bold mb-2">Contatos</h3>
+            <ul className="space-y-1 text-sm">
+              <li>📧 contato@gurpsbrasil.com.br</li>
+              <li>📷 Instagram: @gurpsbrasil</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xl font-bold mb-2">Sugestões</h3>
+            <input
+              type="text"
+              placeholder="Envie uma sugestão..."
+              className="w-full p-2 rounded-md text-black"
+            />
+            <button className="mt-2 w-full bg-[#ed1b24] hover:bg-[#b90d1b] text-white py-2 rounded-md font-semibold">
+              Enviar
             </button>
           </div>
-        </form>
-      )}
+        </div>
+        <div className="text-center text-xs text-gray-400 mt-6">© 2025 GURPS Fórum Brasil. Todos os direitos reservados.</div>
+      </footer>
     </MainLayout>
   );
-}
-
-export async function getServerSideProps(context: any) {
-  const session = await getSession(context);
-
-  if (!session || session.user.role !== 'admin') {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false
-      }
-    };
-  }
-
-  return {
-    props: { session }
-  };
 }

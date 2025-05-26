@@ -2,18 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-gray-100 text-gray-800 font-sans leading-relaxed;
-}
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 6px #f8c946, 0 0 12px #f8c946;
+  }
 
-h1, h2, h3 {
-  @apply font-bold text-gray-900;
-}
+  .animate-glow {
+    animation: pulse-glow 2.5s infinite ease-in-out;
+  }
 
-button {
-  @apply transition-all duration-200 ease-in-out;
-}
+  .animate-fade-in {
+    animation: fadeInUp 1s ease-out both;
+  }
 
-input, textarea {
-  @apply focus:outline-none focus:ring-2 focus:ring-blue-500;
+  @keyframes pulse-glow {
+    0%, 100% {
+      text-shadow: 0 0 8px #f8c946, 0 0 16px #f8c946;
+    }
+    50% {
+      text-shadow: 0 0 4px #fff, 0 0 8px #f8c946;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade {
+    animation: fadeText 1.5s ease-in-out;
+  }
+
+  @keyframes fadeText {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
 }

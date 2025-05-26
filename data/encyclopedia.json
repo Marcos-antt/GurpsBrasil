@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Tirian Greaves",
+    "act": "Ato I",
+    "era": "Era da Guerra Sombria",
+    "summary": "Um guerreiro que abandonou o templo após o Cerco de Lysandor..."
+  },
+  {
+    "id": 2,
+    "title": "Cidade Flutuante de Karth",
+    "act": "Ato II",
+    "era": "Era da Alvorada Mística",
+    "summary": "Uma maravilha tecnológica e mágica que paira sobre as nuvens..."
+  }
+]

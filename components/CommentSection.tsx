@@ -1,0 +1,1 @@
+// CommentSection.tsx - Conteúdo placeholder
