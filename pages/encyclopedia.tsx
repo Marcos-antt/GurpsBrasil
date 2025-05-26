@@ -11,12 +11,11 @@ export default function Encyclopedia() {
     <MainLayout>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-gray-900">Contos de Carim</h1>
-        {session?.user.role === 'admin' && (
-          <Link href="/admin">
-            <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow-md transition duration-200">
-              Nova História
-            </button>
-          </Link>
+        <Link href="/admin">
+          <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow-md transition duration-200">
+            Nova História
+          </button>
+        </Link>
         )}
       </div>
 
