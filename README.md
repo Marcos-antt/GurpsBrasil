@@ -1,5 +1,7 @@
 # GURPS Brasil - Fórum e Enciclopédia
 
+https://gurps-brasil.vercel.app/
+
 Bem-vindo ao **GURPS Brasil**, uma plataforma interativa voltada para a comunidade de RPG que utiliza o sistema GURPS. O projeto reúne funcionalidades de blog, fórum e enciclopédia, com foco em organização de histórias, personagens, mundos e conteúdos multimídia.
 
 #Funcionalidades principais
